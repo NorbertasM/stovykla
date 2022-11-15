@@ -1,0 +1,67 @@
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-header">
+      Vaiko registracija į stovyklą
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onAddNewRegistration(f)" #f="ngForm">
+        <div class="mb-3">
+          <label for="" class="form-label">Vaiko vardas</label>
+          <input type="text" class="form-control" name="name" [ngClass]="(!name.valid && name.touched) ? 'is-invalid' : ''" #name="ngModel" ngModel required minlength="3" maxlength="15" >
+          <div class="invalid-feedback">Privalote nurodyti vaiko vardą, vardas turi būti ne ilgesnis nei 15 simbolių ir ne trumpesnis nei 3 simboliai</div>
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Vaiko pavardė</label>
+          <input type="text" class="form-control" name="lastName" [ngClass]="(!lastName.valid && lastName.touched) ? 'is-invalid' : ''" #lastName="ngModel" ngModel required minlength="3" maxlength="15">
+          <div class="invalid-feedback">Privalote nurodyti vaiko pavardę, pavardė turi būti ne ilgesnė nei 15 simbolių ir ne trumpesnė nei 3 simboliai</div>
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Gimimo metai</label>
+          <input type="number" class="form-control" name="year" [ngClass]="(!year.valid && year.touched) ? 'is-invalid' : ''" #year="ngModel" ngModel required birthYear minlength="4" maxlength="4">
+          <div class="invalid-feedback">Privalote nurodyti vaiko gimimo metus, vaikas negali būti jaunesnis nei 5 metai</div>
+        </div>
+        <div class="mb-3">
+          <div class="row">
+            <label for="" class="form-label">Vaiko lytis</label>
+            <div class="col-md-auto">
+              <div class="form-check">
+                <input class="form-check-input" name="gender" type="radio" [value]="'Berniukas'" ngModel #gender="ngModel" required>
+                <label class="form-check-label" for="gender">
+                  Berniukas
+                </label>
+              </div>
+            </div>
+            <div class="col-md-auto">
+              <div class="form-check col-md-auto">
+                <input class="form-check-input" name="gender" type="radio" [value]="'Mergaitė'" ngModel #gender="ngModel" required>
+                <!-- <input class="form-check-input" name="gender" ng-control="gender" type="radio" [value]="'Mergaitė'" ngModel #gender="ngModel" > -->
+                <label class="form-check-label" for="gender">
+                  Mergaitė
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">El. paštas</label>
+          <input type="text" class="form-control" name="email" [ngClass]="(!email.valid && email.touched) ? 'is-invalid' : ''" #email="ngModel" ngModel required  email="true">
+          <div class="invalid-feedback">Privalote nurodyti tinkamą elektroninį paštą</div>
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Tel. numeris</label>
+          <input type="text" class="form-control" placeholder="+37065312345" name="phoneNr" [ngClass]="(!phoneNr.valid && phoneNr.touched) ? 'is-invalid' : ''" #phoneNr="ngModel" ngModel minlength="10" maxLength="12">
+          <div class="invalid-feedback">Privalote nurodyti telefono numerį, numeris turi būti tarp 10 ir 12 simbolių</div>
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Klasė</label>
+          <input type="number" class="form-control" name="class" [ngClass]="(!class.valid && class.touched) ? 'is-invalid' : ''" #class="ngModel" ngModel min="5" max="12">
+          <div class="invalid-feedback">Privalote nurodyti vaiko klasę, klasė turi būti tarp 5 ir 12</div>
+        </div>
+        <div>
+          <button type="button" class="btn btn-info">Išvalyti formą</button>
+          <button class="btn btn-success float-end" [disabled]="!f.valid">Pridėti</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
