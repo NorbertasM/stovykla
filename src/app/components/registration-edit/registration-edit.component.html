@@ -4,20 +4,20 @@
       Vaiko registracija į stovyklą
     </div>
     <div class="card-body">
-      <form (ngSubmit)="onAddNewRegistration(f)" #f="ngForm">
+      <form (ngSubmit)="onUpdateRegistration(f)" #f="ngForm" *ngIf="registration">
         <div class="mb-3">
           <label for="" class="form-label">Vaiko vardas</label>
-          <input type="text" class="form-control" name="name" [ngClass]="(!name.valid && name.touched) ? 'is-invalid' : ''" #name="ngModel" ngModel required minlength="3" maxlength="15" >
+          <input type="text" class="form-control" name="name" [ngClass]="(!name.valid && name.touched) ? 'is-invalid' : ''" #name="ngModel" ngModel required minlength="3" maxlength="15" [(ngModel)]="registration.name">
           <div class="invalid-feedback">Privalote nurodyti vaiko vardą, vardas turi būti ne ilgesnis nei 15 simbolių ir ne trumpesnis nei 3 simboliai</div>
         </div>
         <div class="mb-3">
           <label for="" class="form-label">Vaiko pavardė</label>
-          <input type="text" class="form-control" name="lastName" [ngClass]="(!lastName.valid && lastName.touched) ? 'is-invalid' : ''" #lastName="ngModel" ngModel required minlength="3" maxlength="15">
+          <input type="text" class="form-control" name="lastName" [ngClass]="(!lastName.valid && lastName.touched) ? 'is-invalid' : ''" #lastName="ngModel" ngModel required minlength="3" maxlength="15" [(ngModel)]="registration.lastName">
           <div class="invalid-feedback">Privalote nurodyti vaiko pavardę, pavardė turi būti ne ilgesnė nei 15 simbolių ir ne trumpesnė nei 3 simboliai</div>
         </div>
         <div class="mb-3">
           <label for="" class="form-label">Gimimo metai</label>
-          <input type="number" class="form-control" name="birthYear" [ngClass]="(!birthYear.valid && birthYear.touched) ? 'is-invalid' : ''" #birthYear="ngModel" ngModel required birthYear minlength="4" maxlength="4">
+          <input type="number" class="form-control" name="birthYear" [ngClass]="(!birthYear.valid && birthYear.touched) ? 'is-invalid' : ''" #birthYear="ngModel" ngModel required birthYear minlength="4" maxlength="4" [(ngModel)]="registration.birthYear">
           <div class="invalid-feedback">Privalote nurodyti vaiko gimimo metus, vaikas negali būti jaunesnis nei 5 metai</div>
         </div>
         <div class="mb-3">
@@ -25,7 +25,7 @@
             <label for="" class="form-label">Vaiko lytis</label>
             <div class="col-md-auto">
               <div class="form-check">
-                <input class="form-check-input" name="childGender" type="radio" [value]="'Berniukas'" ngModel #childGender="ngModel" required>
+                <input class="form-check-input" name="childGender" type="radio" [value]="'Berniukas'" ngModel #childGender="ngModel" required [(ngModel)]="registration.childGender">
                 <label class="form-check-label" for="childGender">
                   Berniukas
                 </label>
@@ -33,7 +33,8 @@
             </div>
             <div class="col-md-auto">
               <div class="form-check col-md-auto">
-                <input class="form-check-input" name="childGender" type="radio" [value]="'Mergaitė'" ngModel #childGender="ngModel" required>
+                <input class="form-check-input" name="childGender" type="radio" [value]="'Mergaitė'" ngModel #childGender="ngModel" required [(ngModel)]="registration.childGender">
+                <!-- <input class="form-check-input" name="gender" ng-control="gender" type="radio" [value]="'Mergaitė'" ngModel #gender="ngModel" > -->
                 <label class="form-check-label" for="childGender">
                   Mergaitė
                 </label>
@@ -43,17 +44,17 @@
         </div>
         <div class="mb-3">
           <label for="" class="form-label">El. paštas</label>
-          <input type="text" class="form-control" name="email" [ngClass]="(!email.valid && email.touched) ? 'is-invalid' : ''" #email="ngModel" ngModel required  email="true">
+          <input type="text" class="form-control" name="email" [ngClass]="(!email.valid && email.touched) ? 'is-invalid' : ''" #email="ngModel" ngModel required  email="true" [(ngModel)]="registration.email">
           <div class="invalid-feedback">Privalote nurodyti tinkamą elektroninį paštą</div>
         </div>
         <div class="mb-3">
           <label for="" class="form-label">Tel. numeris</label>
-          <input type="text" class="form-control" placeholder="+37065312345" name="phoneNr" [ngClass]="(!phoneNr.valid && phoneNr.touched) ? 'is-invalid' : ''" #phoneNr="ngModel" ngModel minlength="10" maxLength="12">
+          <input type="text" class="form-control" placeholder="+37065312345" name="phoneNr" [ngClass]="(!phoneNr.valid && phoneNr.touched) ? 'is-invalid' : ''" #phoneNr="ngModel" ngModel minlength="10" maxLength="12" [(ngModel)]="registration.phoneNr">
           <div class="invalid-feedback">Privalote nurodyti telefono numerį, numeris turi būti tarp 10 ir 12 simbolių</div>
         </div>
         <div class="mb-3">
           <label for="" class="form-label">Klasė</label>
-          <input type="number" class="form-control" name="childClass" [ngClass]="(!childClass.valid && childClass.touched) ? 'is-invalid' : ''" #childClass="ngModel" ngModel min="5" max="12">
+          <input type="number" class="form-control" name="childClass" [ngClass]="(!childClass.valid && childClass.touched) ? 'is-invalid' : ''" #childClass="ngModel" ngModel min="5" max="12" [(ngModel)]="registration.childClass">
           <div class="invalid-feedback">Privalote nurodyti vaiko klasę, klasė turi būti tarp 5 ir 12</div>
         </div>
         <div>

@@ -1,0 +1,38 @@
+<div class="col-md-12 mb-3">
+  <div class="card">
+    <div class="card-header">
+      Registracijų sarašas
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Vardas</th>
+            <th>Pavardė</th>
+            <th>Tel. Nr.</th>
+            <th>Gimimo metai</th>
+            <th>Vaiko lytis</th>
+            <th>El. Paštas</th>
+            <th>Klasė</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let registration of registrations">
+            <td>{{ registration.name }}</td>
+            <td>{{ registration.lastName }}</td>
+            <td>{{ registration.phoneNr }}</td>
+            <td>{{ registration.birthYear }}</td>
+            <td>{{ registration.childGender}}</td>
+            <td>{{ registration.email}}</td>
+            <td>{{ registration.childClass}}</td>
+            <td>
+              <a class="btn btn-success" [routerLink]="['/edit', registration.id]">Redaguoti</a>&nbsp;
+              <button type="button" class="btn btn-danger" (click)="onDeleteClick(registration.id)">Ištrinti</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
