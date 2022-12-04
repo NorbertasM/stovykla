@@ -6,11 +6,11 @@ import { RegistrationService } from 'src/app/services/registration.service';
 
 
 @Component({
-  selector: 'app-registration-lis',
-  templateUrl: './registration-lis.component.html',
-  styleUrls: ['./registration-lis.component.css']
+  selector: 'app-registration-list',
+  templateUrl: './registration-list.component.html',
+  styleUrls: ['./registration-list.component.css']
 })
-export class RegistrationLisComponent implements OnInit {
+export class RegistrationListComponent implements OnInit {
   public registrations: Registration[] = []
   public isLoggedIn = false
   public user: User | null = null

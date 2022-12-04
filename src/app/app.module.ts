@@ -8,7 +8,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { RegistrationEditComponent } from './components/registration-edit/registration-edit.component';
 import { BirthYearDirective } from './directives/birth-year.directive';
-import { RegistrationLisComponent } from './components/registration-lis/registration-lis.component';
+import { RegistrationListComponent } from './components/registration-list/registration-list.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { AuthComponent } from './components/auth/auth.component';
 
@@ -16,7 +16,7 @@ import { AuthComponent } from './components/auth/auth.component';
 const routes: Routes = [
   {
     path: '', 
-    component: RegistrationLisComponent,
+    component: RegistrationListComponent,
   },
   {
     path: 'edit/:id', 
@@ -39,7 +39,7 @@ const routes: Routes = [
     RegistrationEditComponent,
     BirthYearDirective,
     NavigationComponent,
-    RegistrationLisComponent,
+    RegistrationListComponent,
     RegistrationComponent,
     AuthComponent,
   ],
