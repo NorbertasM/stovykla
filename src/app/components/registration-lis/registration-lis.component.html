@@ -3,6 +3,9 @@
     <div class="card-header">
       Registracijų sarašas
     </div>
+    <div>
+      {{ isLoggedIn ? 'Sveiki atvyke ' + user?.email : 'Jūs nesate prisijunges' }}
+    </div>
     <div class="card-body">
       <table class="table">
         <thead>

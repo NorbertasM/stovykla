@@ -13,4 +13,6 @@
       </li>
     </ul>
   </div>
+  <a *ngIf="!isLoggedIn" class="btn btn-success float-end" routerLink="/auth">Prisijungti</a>
+  <button *ngIf="isLoggedIn" class="btn btn-info float-end" (click)="logout()">Atsijungti</button>
 </nav>

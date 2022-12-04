@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Registration } from 'src/app/models/registration';
+import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 import { RegistrationService } from 'src/app/services/registration.service';
 
 
@@ -10,9 +12,16 @@ import { RegistrationService } from 'src/app/services/registration.service';
 })
 export class RegistrationLisComponent implements OnInit {
   public registrations: Registration[] = []
+  public isLoggedIn = false
+  public user: User | null = null
 
-  constructor(private registrationService: RegistrationService) {
+  constructor(
+    private registrationService: RegistrationService,
+    private authService: AuthService
+    ) {
     this.loadData()
+    this.isLoggedIn = this.authService.isLoggedIn()
+    this.user = this.authService.user
    }
 
   ngOnInit(): void {

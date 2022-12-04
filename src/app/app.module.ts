@@ -10,6 +10,7 @@ import { RegistrationEditComponent } from './components/registration-edit/regist
 import { BirthYearDirective } from './directives/birth-year.directive';
 import { RegistrationLisComponent } from './components/registration-lis/registration-lis.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { AuthComponent } from './components/auth/auth.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'new', 
     component: RegistrationComponent,
+  },
+  {
+    path: 'auth', 
+    component: AuthComponent,
   }
 ]
 
@@ -36,6 +41,7 @@ const routes: Routes = [
     NavigationComponent,
     RegistrationLisComponent,
     RegistrationComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
