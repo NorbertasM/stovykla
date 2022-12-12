@@ -14,6 +14,7 @@ import { AuthComponent } from './components/auth/auth.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { FooterComponent } from './components/footer/footer.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,11 @@ const routes: Routes = [
   {
     path: 'auth', 
     component: AuthComponent,
+  },
+  {
+    path: 'changepassword', 
+    component: ChangePasswordComponent,
+    canActivate: [AuthGuard]
   }
 ]
 
@@ -48,6 +54,7 @@ const routes: Routes = [
     RegistrationComponent,
     AuthComponent,
     FooterComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,

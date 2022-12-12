@@ -13,6 +13,7 @@
       </li>
     </ul>
   </div>
+  <button *ngIf="isLoggedIn" class="btn btn-info float-end mx-5" (click)="newPassowrd()">Keisti slaptažodį</button>
   <a *ngIf="!isLoggedIn" class="btn btn-success float-end" routerLink="/auth">Prisijungti</a>
   <button *ngIf="isLoggedIn" class="btn btn-info float-end" (click)="logout()">Atsijungti</button>
 </nav>

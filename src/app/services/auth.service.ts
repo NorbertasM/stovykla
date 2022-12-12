@@ -3,6 +3,8 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { AuthUser } from '../models/authUser';
+import { ChangePassword } from '../models/changePassword';
+import { NewPassword } from '../models/newPassword';
 import { User } from '../models/user';
 
 @Injectable({
@@ -25,6 +27,17 @@ export class AuthService {
     this.userUpdated.emit()
     localStorage.setItem('user', JSON.stringify(res))
   }
+  
+  public onChangePasswordSuccess=(res: NewPassword) => {
+    if (this.user) {
+      this.user.idToken = res.idToken
+      this.user.expiresIn = res.expiresIn
+      this.user.localId = res.localId
+      this.user.refreshToken = res.refreshToken
+      localStorage.setItem('user', JSON.stringify(this.user))
+      this.userUpdated.emit()
+    }
+  }
 
   public autoLogin() {
     const user = localStorage.getItem('user')
@@ -43,6 +56,16 @@ export class AuthService {
     return this.http.post<User>(`${this.url}:signInWithPassword?key=${this.key}`, userInfo).pipe(
       tap(this.onLoginSuccess)
     )
+  }
+
+  public changePassword(newPassword: string) {
+    if (this.user) {
+      const payload = new ChangePassword(newPassword, this.user?.idToken)
+      return this.http.post<NewPassword>(`${this.url}:update?key=${this.key}`, payload).pipe(
+        tap(this.onChangePasswordSuccess)
+      )
+    }
+    return null
   }
 
   public logout() {
