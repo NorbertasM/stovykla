@@ -13,6 +13,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { AuthComponent } from './components/auth/auth.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 const routes: Routes = [
@@ -46,6 +47,7 @@ const routes: Routes = [
     RegistrationListComponent,
     RegistrationComponent,
     AuthComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
