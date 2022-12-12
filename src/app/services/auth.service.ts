@@ -48,6 +48,7 @@ export class AuthService {
   public logout() {
     this.user = null
     this.userUpdated.emit()
+    localStorage.removeItem('user')
     this.router.navigate(['/auth'])
   }
 
