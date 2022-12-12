@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { RegistrationEditComponent } from './components/registration-edit/registration-edit.component';
@@ -11,6 +11,8 @@ import { BirthYearDirective } from './directives/birth-year.directive';
 import { RegistrationListComponent } from './components/registration-list/registration-list.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { AuthComponent } from './components/auth/auth.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 
 const routes: Routes = [
@@ -21,10 +23,12 @@ const routes: Routes = [
   {
     path: 'edit/:id', 
     component: RegistrationEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'new', 
     component: RegistrationComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'auth', 
@@ -49,7 +53,11 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

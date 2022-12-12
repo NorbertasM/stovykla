@@ -8,8 +8,8 @@ import { Registration } from '../models/registration';
   providedIn: 'root'
 })
 export class RegistrationService {
-
   private readonly url = 'https://stovykla-14ba6-default-rtdb.europe-west1.firebasedatabase.app/'
+
   constructor(private http: HttpClient) { }
 
   public addRegistration(registration: Registration) {
